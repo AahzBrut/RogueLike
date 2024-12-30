@@ -1,5 +1,6 @@
 #pragma once
 #include "raylib.h"
+#include "TileType.h"
 #include "core/Core.h"
 #include "utils/Math.h"
 
@@ -9,16 +10,13 @@ namespace RogueLike {
 
     class Tile {
     public:
-        Tile() = default;
+        explicit Tile(TileType type);
 
         void SetExplored(const bool value) { explored = value; }
         [[nodiscard]] bool GetExplored() const { return explored; }
 
         void SetVisible(const bool value) { visible = value; }
         [[nodiscard]] bool GetVisible() const { return visible; }
-
-        void SetTexture(const String &texturePath);
-        [[nodiscard]] Texture2D GetTexture() const { return *texture; }
 
         void SetGridPosition(const int x, const int y) { gridPosition.x = x, gridPosition.y = y; }
         void SetGridPosition(const Vector2I &newPosition) { gridPosition = newPosition; }
@@ -28,7 +26,7 @@ namespace RogueLike {
         [[nodiscard]] float GetIlluminance() const { return illuminance; }
 
     private:
-        Shared<Texture2D> texture;
+        TileType type;
         bool explored{false};
         bool visible{false};
         Vector2I gridPosition{0, 0};

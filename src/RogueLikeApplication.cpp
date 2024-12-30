@@ -1,5 +1,6 @@
 #include "RogueLikeApplication.h"
 
+#include "scenes/DungeonScene.h"
 #include "scenes/MainMenu.h"
 
 
@@ -9,6 +10,6 @@ re::Application *GetApplication() {
 
 namespace RogueLike {
     RogueLikeApplication::RogueLikeApplication(): Application{1280, 960, "RogueLike"} {
-        const auto world = CreateScene<MainMenu>();
+        const auto world = CreateScene<DungeonScene>();
     }
 }

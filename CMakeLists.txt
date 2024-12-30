@@ -21,7 +21,12 @@ add_executable(RogueLike
         src/tilemap/Tile.cpp
         include/utils/Math.h
         include/tilemap/Grid.h
-        src/tilemap/Grid.cpp)
+        src/tilemap/Grid.cpp
+        include/scenes/DungeonScene.h
+        src/scenes/DungeonScene.cpp
+        include/tilemap/TileType.h
+        include/tilemap/TileMap.h
+        src/tilemap/TileMap.cpp)
 
 target_link_libraries(RogueLike PRIVATE RayEngine)
 
