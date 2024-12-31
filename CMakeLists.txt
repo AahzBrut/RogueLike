@@ -26,8 +26,11 @@ add_executable(RogueLike
         src/scenes/DungeonScene.cpp
         include/tilemap/TileType.h
         include/tilemap/TileMap.h
-        src/tilemap/TileMap.cpp)
+        src/tilemap/TileMap.cpp
+        include/tilemap/TileDefinition.h)
 
 target_link_libraries(RogueLike PRIVATE RayEngine)
 
 target_include_directories(RogueLike PUBLIC include)
+
+file(COPY ${CMAKE_CURRENT_LIST_DIR}/assets DESTINATION ${CMAKE_CURRENT_BINARY_DIR})

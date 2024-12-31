@@ -1,6 +1,8 @@
 #pragma once
 #include "core/Scene.h"
+#include "tilemap/TileDefinition.h"
 #include "tilemap/TileMap.h"
+#include "tilemap/TileType.h"
 
 
 namespace RogueLike {
@@ -9,7 +11,8 @@ namespace RogueLike {
         explicit DungeonScene(Application *application);
 
     private:
-        Shared<TileMap> tilemap;
+        Unique<TileMap> tilemap;
+        Map<TileType, TileDefinition> tileDefinitions;
 
         void Render() const override;
     };
