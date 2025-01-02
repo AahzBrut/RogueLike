@@ -8,7 +8,7 @@
 namespace RogueLike {
     DungeonScene::DungeonScene(Application *application)
         : Scene{application},
-          tilemap{new TileMap(this, 200, 200, 16, 16)},
+          tilemap{new TileMap(this, 64, 64)},
           tileDefinitions{
               {
                   TileType::Wall,
@@ -20,11 +20,18 @@ namespace RogueLike {
               }
           } {
         tilemap->SetTileDefinitions(tileDefinitions);
+        tilemap->SetStartPosition({0, 0});
+        auto grid = std::make_unique<Grid>(200, 200);
+        grid->SetTile(0,0, Tile{TileType::Wall});
+        grid->SetTile(1,0, Tile{TileType::Floor});
+        grid->SetTile(2,0, Tile{TileType::Wall});
+        grid->SetTile(0,1, Tile{TileType::Wall});
+        grid->SetTile(1,1, Tile{TileType::Wall});
+        grid->SetTile(2,1, Tile{TileType::Wall});
+        tilemap->SetGrid(std::move(grid));
     }
 
     void DungeonScene::Render() const {
         tilemap->Render();
-        const auto fps = GetFPS();
-        LOG("FPS: %d", fps);
     }
 }

@@ -1,5 +1,4 @@
 #pragma once
-#include "raylib.h"
 #include "TileType.h"
 #include "core/Core.h"
 #include "utils/Math.h"
@@ -11,6 +10,9 @@ namespace RogueLike {
     class Tile {
     public:
         explicit Tile(TileType type);
+
+        void SetType(const TileType newType) { type = newType; }
+        [[nodiscard]] TileType GetType() const { return type; }
 
         void SetExplored(const bool value) { explored = value; }
         [[nodiscard]] bool GetExplored() const { return explored; }

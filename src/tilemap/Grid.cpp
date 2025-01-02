@@ -6,6 +6,12 @@ namespace RogueLike {
         : width{width},
           height{height} {
         tiles.reserve(width * height);
+        for (auto y = 0; y < height; y++) {
+            for (auto x = 0; x < width; x++) {
+                tiles.emplace_back(TileType::None);
+                tiles.back().SetGridPosition(x, y);
+            }
+        }
     }
 
     Tile &Grid::GetTile(const int x, const int y) {
@@ -13,6 +19,14 @@ namespace RogueLike {
     }
 
     Tile &Grid::GetTile(const Vector2I &gridPosition) {
+        return GetTile(gridPosition.x, gridPosition.y);
+    }
+
+    const Tile & Grid::GetTile(const int x, const int y) const {
+        return tiles[y * width + x];
+    }
+
+    const Tile & Grid::GetTile(const Vector2I &gridPosition) const {
         return GetTile(gridPosition.x, gridPosition.y);
     }
 
